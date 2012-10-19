@@ -1,7 +1,7 @@
 <div id="text" class="span8" >
   <p>That's all folks.</p></div>
   <div id="form" class="span2 form-inline">
-    <%= form_tag("/triangles", :method => :get, :remote => "true") do %>
+    <%= form_tag("triangles", :method => :get, :remote => "true") do %>
 		<%= hidden_field(:triangle, :id, :value => @triangle.id) %>
 		<%= hidden_field_tag("stage","2") %>
       </div>

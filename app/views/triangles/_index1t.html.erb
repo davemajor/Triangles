@@ -3,7 +3,7 @@
 <div id="text" class="span6" >
   <p>Make a triangle with AB = 8, BC = 5, and B = 70&deg</p></div>
   <div id="form" class="span4 form-inline">
-    <%= form_tag("/triangles", :method => :post, :remote => "true" ) do %>
+    <%= form_tag("triangles", :method => :post, :remote => "true" ) do %>
       <%= text_field(:triangle, :name, :placeholder => "Enter your name") %>
       <%= hidden_field(:triangle, :x1) %>
       <%= hidden_field(:triangle, :y1) %>

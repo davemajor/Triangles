@@ -2,12 +2,29 @@
 <div id="text" class="span6" >
   <p>Make a triangle with AB = 8, BC = 5, and B = 70&deg</p></div>
   <div id="form" class="span4 form-inline">
-    <%= form_tag("/exposition", :method => :get, :remote => "true") do %>
+    <%= form_tag("/triangles", :method => :get, :remote => "true") do %>
       <%= text_field(:triangle, :name, :placeholder => "Enter your name") %>
-        <%= submit_tag("Share", :class => "btn btn-large btn-primary")%>
+      <%= hidden_field_tag("x1") %>
+      <%= hidden_field_tag("y1") %>
+      <%= hidden_field_tag("x2") %>
+      <%= hidden_field_tag("y2") %>
+      <%= hidden_field_tag("x3") %>
+      <%= hidden_field_tag("y3") %>
+      <%= submit_tag("Share", :class => "btn btn-large btn-primary", :disabled => "true")%>
       </div>
     <% end %>
   </div>
 </div>
-
 </div>
+
+<%= javascript_tag do -%> 
+$(document).ready(function() {
+        $('#triangle_name').keyup(function(){
+            if ($('#triangle_name').val().length > 0) {
+              $("input[type=submit]").removeAttr("disabled");
+            } else {
+              $("input[type=submit]").attr('disabled',true);
+            }
+        });
+});
+<% end -%>

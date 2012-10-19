@@ -19,6 +19,13 @@ function draw_triangle(r, x1,y1,x2,y2,x3,y3) {
 
 	var ab = r.text((abline.getBBox().x) + (abline.getBBox().width/2),(abline.getBBox().y) +(abline.getBBox().height/2)+40,Math.round(abline.getBBox().width/500 * 10)).attr({fill:"#000", 'font-size': 20});
 
+		$('input:hidden[id=x1]').val(Math.round(a.getBBox().x +20));
+		$('input:hidden[id=y1]').val(Math.round(a.getBBox().y +20));
+		$('input:hidden[id=x2]').val(Math.round(b.getBBox().x +20));
+		$('input:hidden[id=y2]').val(Math.round(b.getBBox().y +20));		
+		$('input:hidden[id=x3]').val(Math.round(c.getBBox().x +20));
+		$('input:hidden[id=y3]').val(Math.round(c.getBBox().y +20));
+
 	function move(dx, dy) {
 		this.update(dx - (this.dx || 0), dy - (this.dy || 0));
 		this.dx = dx;
@@ -37,6 +44,8 @@ function draw_triangle(r, x1,y1,x2,y2,x3,y3) {
 		caline.attr({path:"M" + (c.getBBox().x + 20) + " " + (c.getBBox().y +20) + " L" + (a.getBBox().x + 20) + " " + (a.getBBox().y + 20)});
 		aangle.translate(x,y);
 		atext.translate(x,y);
+		$('input:hidden[id=x1]').val(Math.round(a.getBBox().x +20));
+		$('input:hidden[id=y1]').val(Math.round(a.getBBox().y +20));		
 	}
 
 	bangle.drag(move, up);
@@ -48,6 +57,9 @@ function draw_triangle(r, x1,y1,x2,y2,x3,y3) {
 		abline.attr({path:"M" + (a.getBBox().x + 20) + " " + (a.getBBox().y + 20) + " L" + (b.getBBox().x + 20) + " " + (b.getBBox().y + 20)});
 		bangle.translate(x,y);
 		btext.translate(x,y);
+		$('input:hidden[id=x2]').val(Math.round(b.getBBox().x +20));
+		$('input:hidden[id=y2]').val(Math.round(b.getBBox().y +20));		
+
 	}
 
 	c.drag(move, up);
@@ -58,6 +70,9 @@ function draw_triangle(r, x1,y1,x2,y2,x3,y3) {
 		bcline.attr({path:"M" + (b.getBBox().x + 20) + " " + (b.getBBox().y + 20) + " L" + (c.getBBox().x + 20) + " " + (c.getBBox().y + 20)});
 		cangle.translate(x,y);
 		ctext.translate(x,y);
+		$('input:hidden[id=x3]').val(Math.round(c.getBBox().x +20));
+		$('input:hidden[id=y3]').val(Math.round(c.getBBox().y +20));		
+
 	}
 
 	function find_angle(p0,p1,c) {
@@ -67,6 +82,8 @@ function draw_triangle(r, x1,y1,x2,y2,x3,y3) {
 		return Math.acos((p1c*p1c+p0c*p0c-p0p1*p0p1)/(2*p1c*p0c));
 	}
 
+
+
 	function update_angle_labels() {
 		aangle.attr("text","" + Math.round(find_angle(b.getBBox(),c.getBBox(),a.getBBox()) * (180 / Math.PI)) + "\u00B0");
 		bangle.attr("text","" + Math.round(find_angle(a.getBBox(),c.getBBox(),b.getBBox()) * (180 / Math.PI)) + "\u00B0");
@@ -74,7 +91,7 @@ function draw_triangle(r, x1,y1,x2,y2,x3,y3) {
 		ac.attr("x",((caline.getBBox().x) + (caline.getBBox().width/2)));
 		ac.attr("y",((caline.getBBox().y) + (caline.getBBox().height/2))-40);
 		ac.attr("text",Math.round(caline.getBBox().width/500 * 10));
-
+		
 		bc.attr("x",((bcline.getBBox().x) + (bcline.getBBox().width/2))-40);
 		bc.attr("y",((bcline.getBBox().y) + (bcline.getBBox().height/2)));
 		bc.attr("text",Math.round(bcline.getBBox().height/500 * 10));

@@ -1,12 +1,10 @@
-<div id="copy" class="row">
 <div id="text" class="span8" >
   <p>We gave you two sides and an angle between them. Does that combination seem to guarantee triangles with identical shapes?</p></div>
   <div id="form" class="span2 form-inline">
-    <%= form_tag("/exposition", :method => :get, :remote => "true") do %>
-        <%= submit_tag("Yes", :class => "btn btn-large btn-primary")%>
-        <%= submit_tag("No", :class => "btn btn-large btn-primary")%>
+    <%= form_tag("/results", :method => :post, :remote => "true") do %>
+        <%= submit_tag("Yes", :class => "btn btn-large btn-primary", :name => "yes")%>
+        <%= submit_tag("No", :class => "btn btn-large btn-primary", :name => "no")%>
       </div>
     <% end %>
   </div>
-</div>
 </div>

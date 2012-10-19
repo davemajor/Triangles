@@ -1,0 +1,8 @@
+<% if params.has_key?(:second) %>
+	$("#holder").hide().html("<%= escape_javascript(render(:partial => "show1"))%>").fadeIn(500);
+	<% else %>
+$("#holder").hide().html("<%= escape_javascript(render(:partial => "show1"))%>").fadeIn(500);
+$("#copy").hide().html("<%= escape_javascript(render(:partial => "show1t"))%>").fadeIn(500);
+$('body').append("<%= escape_javascript(render(:partial => "sidebar"))%>");
+<% end %>
+

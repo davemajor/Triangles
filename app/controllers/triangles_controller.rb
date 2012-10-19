@@ -13,12 +13,15 @@ class TrianglesController < ApplicationController
   # GET /triangles/1
   # GET /triangles/1.json
   def show
+    #@triangle = Triangle.find(params[:id])
     @triangle = Triangle.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @triangle }
+    @alltriangles = Triangle.all
+    if params.has_key?(:second)
+      @othertriangle = Triangle.find(params[:second])
     end
+    respond_to do |format|
+      format.js {render :template => 'triangles/stage2', :format => [:js]}
+      end
   end
 
   # GET /triangles/new
@@ -41,11 +44,12 @@ class TrianglesController < ApplicationController
   # POST /triangles.json
   def create
     @triangle = Triangle.new(params[:triangle])
-
     respond_to do |format|
       if @triangle.save
-        format.html { redirect_to @triangle, notice: 'Triangle was successfully created.' }
-        format.json { render json: @triangle, status: :created, location: @triangle }
+        @alltriangles = Triangle.all
+         format.js {render :template => 'triangles/stage2', :format => [:js]}
+#        format.html { redirect_to @triangle, notice: 'Triangle was successfully created.' }
+#        format.json { render json: @triangle, status: :created, location: @triangle }
       else
         format.html { render action: "new" }
         format.json { render json: @triangle.errors, status: :unprocessable_entity }

@@ -1,6 +1,10 @@
 Triangles::Application.routes.draw do
   resources :triangles
 
+  match 'show' => 'triangles#show'
+  match 'results' => 'triangles#results'
+
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

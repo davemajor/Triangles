@@ -5,6 +5,8 @@ class TrianglesController < ApplicationController
     @triangles = Triangle.all
     if params[:triangle].present?
       @triangle = Triangle.find(params[:triangle][:id])
+    else 
+      @triangle = Triangle.new
     end
     @stage = params[:stage]
     respond_to do |format|
@@ -70,10 +72,6 @@ class TrianglesController < ApplicationController
 #        format.html { redirect_to @triangle, notice: 'Triangle was successfully created.' }
 #        format.json { render json: @triangle, status: :created, location: @triangle }
       else
-        format.js {render :template => 'triangles/index', :format => [:js]}
-        format.html # index.html.erb
-        format.html { render action: "new" }
-        format.json { render json: @triangle.errors, status: :unprocessable_entity }
       end
     end
   end

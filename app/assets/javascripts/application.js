@@ -21,5 +21,4 @@
 //= require g.raphael/g.raphael.js
 //= require g.raphael/g.bar.js
 //= require triangle
-//= require_tree .
 

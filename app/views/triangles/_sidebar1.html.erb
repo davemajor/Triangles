@@ -1,6 +1,6 @@
 <%= javascript_tag do -%> 
 	$('a').click( function() { 
-		$.get('/show',{id: <%= @triangle.id %>,second: $(this).data("id"), stage: <%= @triangle.stage %>}, function(data) {
+		$.get('show',{id: <%= @triangle.id %>,second: $(this).data("id"), stage: <%= @triangle.stage %>}, function(data) {
   		//$('#holder').html(data);
 });
 } );

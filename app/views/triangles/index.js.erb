@@ -1,7 +1,7 @@
 <% if params[:stage] == "2" %>
 	$("#holder").html("<%= escape_javascript(render(:partial => "index2"))%>");
 	$("#copy").html("<%= escape_javascript(render(:partial => "index2t"))%>");
-<% else %>
+<% elsif params[:stage] == "1" %>
 	$("#holder").html("<%= escape_javascript(render(:partial => "index1"))%>");
 	$("#copy").html("<%= escape_javascript(render(:partial => "index1t"))%>");
 <% end %>

@@ -1,0 +1,9 @@
+<% if params[:stage] != "2" %>
+$("#holder").html("<%= escape_javascript(render(:partial => "results1"))%>");
+$("#copy").html("<%= escape_javascript(render(:partial => "results1t"))%>");
+$('#palatte').remove();
+<% else %>
+$("#holder").html("<%= escape_javascript(render(:partial => "results2"))%>");
+$("#copy").html("<%= escape_javascript(render(:partial => "results2t"))%>");
+$('#palatte').remove();
+<% end %>

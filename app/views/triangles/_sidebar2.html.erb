@@ -1,0 +1,20 @@
+<%= javascript_tag do -%> 
+	$('a').click( function() { 
+		$.get('/show',{id: <%= @triangle.id %>,second: $(this).data("id"), stage: <%= @triangle.stage %>}, function(data) {
+  		//$('#holder').html(data);
+});
+} );
+<% end %>
+<div id="palatte">
+<p style="	font-family:HelveticaNeue-Light; 
+	font-size:24px; 
+	font-weight:bold;
+	line-height: 1.2; margin-left:20px;">Classmate</p>
+<ul class="names" style="list-style:none;">
+<% @alltriangles.select{|e|e.stage==2}.each do |triangle| %>
+	<% if triangle.id != @triangle.id %>
+		<li><a href="#" data-id="<%=triangle.id %>"><%= triangle.name %></li>
+	<% end %>
+<% end %>
+<ul>
+</div>

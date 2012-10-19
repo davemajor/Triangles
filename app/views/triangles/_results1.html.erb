@@ -1,0 +1,10 @@
+<%= javascript_tag do -%> 
+$(document).ready(function(){
+	var imageX = 1024, imageY = 600;
+	var r = Raphael("holder", imageX, imageY);
+	var chart = r.barchart(10, 50, 1000, 500, [[<%= @alltriangles.select {|e| e.answer == true}.select {|e| e.stage == 1}.count%> , <%= @alltriangles.select {|e| e.answer == false}.select {|e| e.stage == 1}.count%>]], 0, {type: "sharp"});
+	r.text(270,550,"Yes").attr({fill:"#000", 'font-size': 20});
+	r.text(750,550,"No").attr({fill:"#000", 'font-size': 20});
+
+});
+<% end %>

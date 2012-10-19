@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(:version => 20121019051557) do
     t.integer  "x3"
     t.integer  "y3"
     t.integer  "stage"
+    t.boolean  "answer"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

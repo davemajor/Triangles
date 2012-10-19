@@ -9,7 +9,7 @@ class CreateTriangles < ActiveRecord::Migration
       t.integer :x3
       t.integer :y3
       t.integer :stage
-
+      t.boolean :answer
       t.timestamps
     end
   end

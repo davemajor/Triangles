@@ -59,7 +59,7 @@ if (draggable) {
 		$('input:hidden[id=triangle_y2]').val(Math.round(b.getBBox().y +20));		
 
 	}
-
+	c.drag(move, up);
 	c.update = function(x,y) {
 		this.translate(x,y)				
 		update_angle_labels();

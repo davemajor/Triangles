@@ -1,8 +1,18 @@
-<% if params.has_key?(:second) %>
-	$("#holder").hide().html("<%= escape_javascript(render(:partial => "show1"))%>").fadeIn(500);
+<% if params[:stage] == "1" %>
+	<% if params.has_key?(:second) %>
+		$("#holder").html("<%= escape_javascript(render(:partial => "show1"))%>");
 	<% else %>
-$("#holder").hide().html("<%= escape_javascript(render(:partial => "show1"))%>").fadeIn(500);
-$("#copy").hide().html("<%= escape_javascript(render(:partial => "show1t"))%>").fadeIn(500);
-$('body').append("<%= escape_javascript(render(:partial => "sidebar"))%>");
+	$("#holder").html("<%= escape_javascript(render(:partial => "show1"))%>");
+	$("#copy").html("<%= escape_javascript(render(:partial => "show1t"))%>");
+	$('body').append("<%= escape_javascript(render(:partial => "sidebar1"))%>");
+	<% end %>
+<% elsif params[:stage] == "2" %>
+	<% if params.has_key?(:second) %>
+		$("#holder").html("<%= escape_javascript(render(:partial => "show2"))%>");
+	<% else %>
+	$("#holder").html("<%= escape_javascript(render(:partial => "show2"))%>");
+	$("#copy").html("<%= escape_javascript(render(:partial => "show2t"))%>");
+	$('body').append("<%= escape_javascript(render(:partial => "sidebar2"))%>");
+	<% end %>
 <% end %>
 

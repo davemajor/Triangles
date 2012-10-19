@@ -3,18 +3,37 @@ class TrianglesController < ApplicationController
   # GET /triangles.json
   def index
     @triangles = Triangle.all
-
+    if params[:triangle].present?
+      @triangle = Triangle.find(params[:triangle][:id])
+    end
+    @stage = params[:stage]
     respond_to do |format|
+      format.js {render :template => 'triangles/index', :format => [:js]}
       format.html # index.html.erb
       format.json { render json: @triangles }
     end
   end
+
+  def results
+    @triangle = Triangle.find(params[:triangle][:id])
+    if params.has_key?(:yes)
+      @triangle.answer = true
+    else 
+      @triangle.answer = false
+    end
+    @triangle.save
+    @alltriangles = Triangle.all
+    respond_to do |format|
+      format.js {render :template => 'triangles/results', :format => [:js]}
+    end
+  end    
 
   # GET /triangles/1
   # GET /triangles/1.json
   def show
     #@triangle = Triangle.find(params[:id])
     @triangle = Triangle.find(params[:id])
+    @stage = @triangle.stage
     @alltriangles = Triangle.all
     if params.has_key?(:second)
       @othertriangle = Triangle.find(params[:second])

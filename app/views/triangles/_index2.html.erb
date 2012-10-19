@@ -1,0 +1,8 @@
+<%= javascript_tag do -%> 
+$(document).ready(function(){
+
+  var imageX = 1024, imageY = 600;
+  var r = Raphael("holder", imageX, imageY);
+  draw_triangle(r, 600,400,300,400,300,100,1,true);
+});
+<% end %>

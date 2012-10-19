@@ -1,6 +1,6 @@
 <%= javascript_tag do -%> 
 	$('a').click( function() { 
-		$.get('/show',{id: <%= @triangle.id %>,second: $(this).data("id")}, function(data) {
+		$.get('/show',{id: <%= @triangle.id %>,second: $(this).data("id"), stage: <%= @triangle.stage %>}, function(data) {
   		//$('#holder').html(data);
 });
 } );
@@ -11,7 +11,7 @@
 	font-weight:bold;
 	line-height: 1.2; margin-left:20px;">Classmate</p>
 <ul class="names" style="list-style:none;">
-<% @alltriangles.each do |triangle| %>
+<% @alltriangles.select{|e|e.stage==1}.each do |triangle| %>
 	<% if triangle.id != @triangle.id %>
 		<li><a href="#" data-id="<%=triangle.id %>"><%= triangle.name %></li>
 	<% end %>

@@ -1,0 +1,11 @@
+<div id="text" class="span8" >
+  <p></p></div>
+  <div id="form" class="span2 form-inline">
+    <%= form_tag("/triangles", :method => :get, :remote => "true") do %>
+		<%= hidden_field(:triangle, :id, :value => @triangle.id) %>
+		<%= hidden_field_tag("stage","2") %>
+        <%= submit_tag("Next", :class => "btn btn-large btn-primary")%>
+      </div>
+    <% end %>
+  </div>
+</div>

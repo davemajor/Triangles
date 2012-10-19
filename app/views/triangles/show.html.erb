@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @triangle.name %>
+</p>
+
+<p>
+  <b>X1:</b>
+  <%= @triangle.x1 %>
+</p>
+
+<p>
+  <b>Y1:</b>
+  <%= @triangle.y1 %>
+</p>
+
+<p>
+  <b>X2:</b>
+  <%= @triangle.x2 %>
+</p>
+
+<p>
+  <b>Y2:</b>
+  <%= @triangle.y2 %>
+</p>
+
+<p>
+  <b>X3:</b>
+  <%= @triangle.x3 %>
+</p>
+
+<p>
+  <b>Y3:</b>
+  <%= @triangle.y3 %>
+</p>
+
+<p>
+  <b>Stage:</b>
+  <%= @triangle.stage %>
+</p>
+
+
+<%= link_to 'Edit', edit_triangle_path(@triangle) %> |
+<%= link_to 'Back', triangles_path %>

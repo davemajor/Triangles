@@ -10,6 +10,16 @@
 // WARNING: THE FIRST BLANK LINE MARKS THE END OF WHAT'S TO BE PROCESSED, ANY BLANK LINE SHOULD
 // GO AFTER THE REQUIRES BELOW.
 //
-//= require jquery
+//= require jquery.min
 //= require jquery_ujs
+//= require jquery.ui.core
+//= require jquery.ui.button
+//= require twitter/bootstrap/bootstrap-tooltip
+//= require twitter/bootstrap/bootstrap-popover
+//= require twitter/bootstrap/bootstrap-button
+//= require raphael-min
+//= require g.raphael/g.raphael.js
+//= require g.raphael/g.bar.js
+//= require triangle
 //= require_tree .
+

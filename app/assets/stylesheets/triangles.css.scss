@@ -1,3 +1,40 @@
 // Place all the styles related to the triangles controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#text p {
+	font-family: "HelveticaNeue-Light", "Helvetica Neue Light",
+             "Helvetica Neue", sans-serif;
+	font-weight: 300;
+	font-size: 24px;
+	line-height: 1.2;
+}
+
+#form {
+padding-top:7px;
+}
+
+#copy {
+	-webkit-box-shadow:  0px -10px 10px 0px rgba(00, 0, 0, .2);
+	box-shadow:  0px -10px 10px 0px rgba(00, 0, 0, .2);
+	position:absolute; 
+	z-index:1; 
+	top:590px;  
+	width:1024px; 
+	height: 90px;
+	background-color:#fff; 
+	font-family:Helvetica;
+	padding-top:20px;
+}
+
+#copy p {
+	padding:10px; 
+}
+
+#holder {
+	height: 672px;
+	overflow: scroll;
+	-webkit-overflow-scrolling: touch;
+	position:absolute; 
+	top:0px;
+}

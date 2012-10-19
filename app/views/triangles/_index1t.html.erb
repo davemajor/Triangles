@@ -1,0 +1,13 @@
+<div id="copy" class="row">
+<div id="text" class="span6" >
+  <p>Make a triangle with AB = 8, BC = 5, and B = 70&deg</p></div>
+  <div id="form" class="span4 form-inline">
+    <%= form_tag("/exposition", :method => :get, :remote => "true") do %>
+      <%= text_field(:triangle, :name, :placeholder => "Enter your name") %>
+        <%= submit_tag("Share", :class => "btn btn-large btn-primary")%>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+</div>

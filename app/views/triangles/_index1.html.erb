@@ -1,0 +1,10 @@
+<div id="holder"></div>
+
+<%= javascript_tag do -%> 
+window.onload = function () {
+	var imageX = 1024, imageY = 600;
+	var r = Raphael("holder", imageX, imageY);
+		
+	draw_triangle(r, 600,400,300,400,300,100);
+};
+<% end %>

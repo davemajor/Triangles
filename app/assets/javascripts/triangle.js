@@ -12,12 +12,23 @@ function draw_triangle(r, x1,y1,x2,y2,x3,y3) {
 	var atext = r.text((a.getBBox().x+20),(a.getBBox().y+20),"A").attr({fill:"#FFF", 'font-size': 20});
 	var btext = r.text((b.getBBox().x+20),(b.getBBox().y+20),"B").attr({fill:"#FFF", 'font-size': 20});
 	var ctext = r.text((c.getBBox().x+20),(c.getBBox().y+20),"C").attr({fill:"#FFF", 'font-size': 20});
+	
+	function distance_between(x1,y1, x2,y2) {
+		deltaX = x1 - x2
+    	deltaY = y1 - y2
+    	return Math.sqrt(Math.pow(deltaY, 2) + Math.pow(deltaX, 2));
+	}
 
-	var ac = r.text((caline.getBBox().x) + (caline.getBBox().width/2)-40,(caline.getBBox().y) +(caline.getBBox().height/2)-40,(caline.getBBox().width/500 * 10).toFixed(1)).attr({fill:"#000", 'font-size': 20});
+	function mid_point (x,y) {
+		return Math.min(x,y) + ((Math.max(x,y) - Math.min(x,y))/2);
+	}
+ 	
 
-	var bc = r.text((bcline.getBBox().x) + (bcline.getBBox().width/2)+40,(bcline.getBBox().y) +(bcline.getBBox().height/2)-40,(bcline.getBBox().height/500 * 10).toFixed(1)).attr({fill:"#000", 'font-size': 20});
+	var ac = r.text(mid_point(a.getBBox().x,c.getBBox().x)-20,mid_point(a.getBBox().y,c.getBBox().y)-20,(distance_between(a.getBBox().x,a.getBBox().y,c.getBBox().x,c.getBBox().y)/50).toFixed(1)).attr({fill:"#000", 'font-size': 20});
 
-	var ab = r.text((abline.getBBox().x) + (abline.getBBox().width/2),(abline.getBBox().y) +(abline.getBBox().height/2)+40,(abline.getBBox().width/500 * 10).toFixed(1)).attr({fill:"#000", 'font-size': 20});
+	var bc = r.text(mid_point(b.getBBox().x,c.getBBox().x)+40,mid_point(b.getBBox().y,c.getBBox().y)-20,(distance_between(b.getBBox().x,b.getBBox().y,c.getBBox().x,c.getBBox().y)/50).toFixed(1)).attr({fill:"#000", 'font-size': 20});
+
+	var ab = r.text(mid_point(a.getBBox().x,b.getBBox().x)+20,mid_point(a.getBBox().y,b.getBBox().y)+80,(distance_between(a.getBBox().x,a.getBBox().y,b.getBBox().x,b.getBBox().y)/50).toFixed(1)).attr({fill:"#000", 'font-size': 20});
 
 	function move(dx, dy) {
 		this.update(dx - (this.dx || 0), dy - (this.dy || 0));
@@ -71,17 +82,16 @@ function draw_triangle(r, x1,y1,x2,y2,x3,y3) {
 		aangle.attr("text","" + Math.round(find_angle(b.getBBox(),c.getBBox(),a.getBBox()) * (180 / Math.PI)) + "\u00B0");
 		bangle.attr("text","" + Math.round(find_angle(a.getBBox(),c.getBBox(),b.getBBox()) * (180 / Math.PI)) + "\u00B0");
 		cangle.attr("text","" + Math.round(find_angle(a.getBBox(),b.getBBox(),c.getBBox()) * (180 / Math.PI)) + "\u00B0");
-		ac.attr("x",((caline.getBBox().x) + (caline.getBBox().width/2))-40);
-		ac.attr("y",((caline.getBBox().y) + (caline.getBBox().height/2))-40);
-		ac.attr("text",(caline.getBBox().width/500 * 10).toFixed(1));
-		
+		ac.attr("x",mid_point(a.getBBox().x,c.getBBox().x)-20);
+		ac.attr("y",mid_point(a.getBBox().y,c.getBBox().y)-20);
+		ac.attr("text",((distance_between(a.getBBox().x,a.getBBox().y,c.getBBox().x,c.getBBox().y)/50).toFixed(1)));
 
-		bc.attr("x",((bcline.getBBox().x) + (bcline.getBBox().width/2))+40);
-		bc.attr("y",((bcline.getBBox().y) + (bcline.getBBox().height/2))-40);
-		bc.attr("text",(bcline.getBBox().width/500 * 10).toFixed(1));
+		bc.attr("x",mid_point(b.getBBox().x,c.getBBox().x)+40);
+		bc.attr("y",mid_point(b.getBBox().y,c.getBBox().y)-20);
+		bc.attr("text",((distance_between(b.getBBox().x,b.getBBox().y,c.getBBox().x,c.getBBox().y)/50).toFixed(1)));
 
-		ab.attr("x",((abline.getBBox().x) + (abline.getBBox().width/2)));
-		ab.attr("y",((abline.getBBox().y) + (abline.getBBox().height/2))+40);
-		ab.attr("text",(abline.getBBox().width/500 * 10).toFixed(1));
+		ab.attr("x",mid_point(a.getBBox().x,b.getBBox().x)+20);
+		ab.attr("y",mid_point(a.getBBox().y,b.getBBox().y)+80);
+		ab.attr("text",((distance_between(a.getBBox().x,a.getBBox().y,b.getBBox().x,b.getBBox().y)/50).toFixed(1)));
 	}
 }

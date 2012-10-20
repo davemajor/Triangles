@@ -43,3 +43,5 @@ gem 'jquery-ui-bootstrap-rails'
 gem 'jquery-ui-rails'
 gem 'thin'
 gem 'graphael-rails'
+gem 'google-analytics-rails'
+

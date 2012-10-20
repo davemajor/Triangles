@@ -44,6 +44,7 @@ GEM
     execjs (1.4.0)
       multi_json (~> 1.0)
     git (1.2.5)
+    google-analytics-rails (0.0.3)
     graphael-rails (0.1.4)
       jeweler
     hike (1.2.1)
@@ -136,6 +137,7 @@ PLATFORMS
 
 DEPENDENCIES
   coffee-rails (~> 3.2.1)
+  google-analytics-rails
   graphael-rails
   jquery-rails
   jquery-ui-bootstrap-rails

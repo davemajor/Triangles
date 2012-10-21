@@ -72,7 +72,8 @@ class TrianglesController < ApplicationController
 #        format.html { redirect_to @triangle, notice: 'Triangle was successfully created.' }
 #        format.json { render json: @triangle, status: :created, location: @triangle }
       else
-      end
+        flash[:error] = @triangle.errors.full_messages.to_sentence
+        format.js { render :js => '$("#login").modal("show");' }      end
     end
   end
 

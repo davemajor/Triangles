@@ -17,6 +17,8 @@
 //= require twitter/bootstrap/bootstrap-tooltip
 //= require twitter/bootstrap/bootstrap-popover
 //= require twitter/bootstrap/bootstrap-button
+//= require twitter/bootstrap/bootstrap-alert
+//= require twitter/bootstrap/bootstrap-modal
 //= require raphael-min
 //= require g.raphael/g.raphael.js
 //= require g.raphael/g.bar.js

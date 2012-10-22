@@ -5,6 +5,9 @@ $(document).ready(function(){
 	var chart = r.barchart(10, 50, 1000, 500, [[<%= @alltriangles.select {|e| e.answer == true}.select {|e| e.stage == 1}.count%> , <%= @alltriangles.select {|e| e.answer == false}.select {|e| e.stage == 1}.count%>]], 0, {type: "sharp"});
 	r.text(270,550,"Yes").attr({fill:"#000", 'font-size': 20});
 	r.text(750,550,"No").attr({fill:"#000", 'font-size': 20});
+	r.text(chart.bars[0][0].x,chart.bars[0][0].y-20,chart.bars[0][0].value).attr({fill:"#000", 'font-size': 20});
+	r.text(chart.bars[0][1].x,chart.bars[0][1].y-20,chart.bars[0][1].value).attr({fill:"#000", 'font-size': 20});
+
 
 });
 <% end %>

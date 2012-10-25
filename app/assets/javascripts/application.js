@@ -14,13 +14,10 @@
 //= require jquery_ujs
 //= require jquery.ui.core
 //= require jquery.ui.button
-//= require twitter/bootstrap/bootstrap-tooltip
-//= require twitter/bootstrap/bootstrap-popover
 //= require twitter/bootstrap/bootstrap-button
-//= require twitter/bootstrap/bootstrap-alert
 //= require twitter/bootstrap/bootstrap-modal
-//= require raphael-min
+//= require raphael
 //= require g.raphael/g.raphael.js
 //= require g.raphael/g.bar.js
+//= require raphael.free_transform
 //= require triangle
-

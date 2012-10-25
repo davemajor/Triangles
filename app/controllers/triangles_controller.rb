@@ -68,12 +68,13 @@ class TrianglesController < ApplicationController
     respond_to do |format|
       if @triangle.save
         @alltriangles = Triangle.all
-         format.js {render :template => 'triangles/stage2', :format => [:js]}
+         format.js {render :template => 'triangles/stage2', :format => [:js], :locals => { :stage => @triangle.stage}}
 #        format.html { redirect_to @triangle, notice: 'Triangle was successfully created.' }
 #        format.json { render json: @triangle, status: :created, location: @triangle }
       else
-        flash[:error] = @triangle.errors.full_messages.to_sentence
-        format.js { render :js => '$("#login").modal("show");' }      end
+        #flash[:error] = @triangle.errors.full_messages.to_sentence
+        format.js { render :js => '$("#login").modal("show");' }      
+      end
     end
   end
 

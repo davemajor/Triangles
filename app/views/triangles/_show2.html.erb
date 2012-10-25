@@ -3,7 +3,7 @@ $(document).ready(function(){
 	var imageX = 1024, imageY = 600;
 	var r = Raphael("holder", imageX, imageY);
 	
-	draw_triangle(r, <%= @triangle.x1 %>,<%= @triangle.y1 %>,<%= @triangle.x2 %>,<%= @triangle.y2 %>,<%= @triangle.x3 %>,<%= @triangle.y3 %>,1,false);
+	draw_triangle(r, <%= @triangle.x1 %>,<%= @triangle.y1 %>,<%= @triangle.x2 %>,<%= @triangle.y2 %>,<%= @triangle.x3 %>,<%= @triangle.y3 %>,1,false,true,true);
 
 
 	<% if params.has_key?(:second) %>

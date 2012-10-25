@@ -1,7 +1,7 @@
 <div id="text" class="span8" >
   <p>Make a triangle with A = 70&deg, B = 30&deg, C = 80&deg</p></div>
   <div id="form" class="span2 form-inline">
-    <%= form_tag("/triangles", :method => :post, :remote => "true") do %>
+    <%= form_tag("triangles/", :method => :post, :remote => "true") do %>
       <%= hidden_field(:triangle, :name, :value => @triangle.name) %>
       <%= hidden_field(:triangle, :x1) %>
       <%= hidden_field(:triangle, :y1) %>

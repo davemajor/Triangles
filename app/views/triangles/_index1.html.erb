@@ -1,10 +1,15 @@
 <div id="holder"></div>
-
-
 <%= javascript_tag do -%> 
 window.onload = function () {
 	var imageX = 1024, imageY = 600;
 	var r = Raphael("holder", imageX, imageY);
 		draw_triangle(r, (Math.floor(Math.random() * 300) + 100),(Math.floor(Math.random() * 300) + 100),(Math.floor(Math.random() * 500) + 500),(Math.floor(Math.random() * 300) + 100),(Math.floor(Math.random() * 300) + 300),(Math.floor(Math.random() * 100) + 70),1,true, true,false);
+
 	};
+
 <% end %>
+
+<div class="btn-group" style="position:absolute; top:540px; left:920px">
+  <button class="btn" onclick="flipped();">H</button>
+  <button class="btn">V</button>
+</div>

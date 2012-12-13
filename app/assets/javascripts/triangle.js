@@ -1,3 +1,4 @@
+var flipped;
 function draw_triangle(r, x1,y1,x2,y2,x3,y3,opacity,draggable,movable,rotatable) {	
 	var a = r.circle(x1, y1,20).attr({fill: "#000", stroke: "none", opacity:opacity});
 	var b = r.circle(x2, y2,20).attr({fill: "#000", stroke: "none", opacity:opacity});
@@ -28,6 +29,21 @@ function draw_triangle(r, x1,y1,x2,y2,x3,y3,opacity,draggable,movable,rotatable)
 	var bc = r.text(mid_point(b.getBBox().x,c.getBBox().x)+40,mid_point(b.getBBox().y,c.getBBox().y)-20,(distance_between(b.getBBox().x,b.getBBox().y,c.getBBox().x,c.getBBox().y)/50).toFixed(1)).attr({fill:"#000", 'font-size': 20, opacity:opacity});
 	var ab = r.text(mid_point(a.getBBox().x,b.getBBox().x)+20,mid_point(a.getBBox().y,b.getBBox().y)+80,(distance_between(a.getBBox().x,a.getBBox().y,b.getBBox().x,b.getBBox().y)/50).toFixed(1)).attr({fill:"#000", 'font-size': 20, opacity:opacity});
 
+	flipped = function() {
+		var points = [a,b,c];
+		var max = Math.max.apply(Math,points.map(function(o){return o.getBBox().y;}));
+		var min = Math.min.apply(Math,points.map(function(o){return o.getBBox().y;}));
+		var lowest = points.indexOf( points.filter( function(i){return i.getBBox().y==max} )[0] );
+		var highest = points.indexOf( points.filter( function(i){return i.getBBox().y==min} )[0] );
+		var middle = points.indexOf( points.filter( function(i){return i.getBBox().y!=min && i.getBBox().y!=max} )[0] );
+
+		var tmp = points[highest].getBBox().y;
+
+		points[highest].translate(0,(points[lowest].getBBox().y-points[highest].getBBox().y));
+		points[middle].translate(0,0)
+		points[lowest].translate(0,0-((points[lowest].getBBox().y-points[middle].getBBox().y)*2));
+
+	}
 	function distance_between(x1,y1, x2,y2) {
 		deltaX = x1 - x2;
     	deltaY = y1 - y2;
@@ -38,7 +54,7 @@ function draw_triangle(r, x1,y1,x2,y2,x3,y3,opacity,draggable,movable,rotatable)
 		return Math.min(x,y) + ((Math.max(x,y) - Math.min(x,y))/2);
 	}
 
-		function find_angle(p0,p1,c) {
+	function find_angle(p0,p1,c) {
 		var p0c = Math.sqrt(Math.pow(c.x-p0.x,2)+ Math.pow(c.y-p0.y,2)); // p0->c (b)   
 		var p1c = Math.sqrt(Math.pow(c.x-p1.x,2)+Math.pow(c.y-p1.y,2)); // p1->c (a)
 		var p0p1 = Math.sqrt(Math.pow(p1.x-p0.x,2)+Math.pow(p1.y-p0.y,2)); // p0->p1 (c)
@@ -49,6 +65,7 @@ function draw_triangle(r, x1,y1,x2,y2,x3,y3,opacity,draggable,movable,rotatable)
 		aangle.attr("text","" + Math.round(find_angle(b.getBBox(),c.getBBox(),a.getBBox()) * (180 / Math.PI)) + "\u00B0");
 		bangle.attr("text","" + Math.round(find_angle(a.getBBox(),c.getBBox(),b.getBBox()) * (180 / Math.PI)) + "\u00B0");
 		cangle.attr("text","" + Math.round(find_angle(a.getBBox(),b.getBBox(),c.getBBox()) * (180 / Math.PI)) + "\u00B0");
+
 		ac.attr("x",mid_point(a.getBBox().x,c.getBBox().x)-20);
 		ac.attr("y",mid_point(a.getBBox().y,c.getBBox().y)-20);
 		ac.attr("text",((distance_between(a.getBBox().x,a.getBBox().y,c.getBBox().x,c.getBBox().y)/50).toFixed(1)));
@@ -94,7 +111,7 @@ if (movable) {
 if (rotatable) {
 	var everything = r.set();
 	everything.push(path,a,b,c,aangle,bangle,cangle,atext,btext,ctext,acover,bcover,ccover,ab,ac,bc);
-	var ft = r.freeTransform(everything,{scale:false, rotate:true});
+	var ft = r.freeTransform(everything,{scale:false, rotate:true,size: 10});
 	ft.showHandles();
 	acover.update = function(x,y) {  
 	}

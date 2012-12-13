@@ -8,6 +8,8 @@ $(document).ready(function(){
 
 	<% if params.has_key?(:second) %>
 		draw_triangle(r, <%= @othertriangle.x1 %>,<%= @othertriangle.y1 %>,<%= @othertriangle.x2 %>,<%= @othertriangle.y2 %>,<%= @othertriangle.x3 %>,<%= @othertriangle.y3 %>,0.2,false);	
+	<% else %>
+		draw_triangle(r, <%= @alltriangles.select{|e|e.stage==2}.first.x1 %>,<%= @alltriangles.select{|e|e.stage==2}.first.y1 %>,<%= @alltriangles.select{|e|e.stage==2}.first.x2 %>,<%= @alltriangles.select{|e|e.stage==2}.first.y2 %>,<%= @alltriangles.select{|e|e.stage==2}.first.x3 %>,<%= @alltriangles.select{|e|e.stage==2}.first.y3 %>,0.2,false,false,false);	
 	<% end %>
 });
 <% end %>

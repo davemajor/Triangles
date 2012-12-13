@@ -5,9 +5,10 @@ $(document).ready(function(){
 	
 	draw_triangle(r, <%= @triangle.x1 %>,<%= @triangle.y1 %>,<%= @triangle.x2 %>,<%= @triangle.y2 %>,<%= @triangle.x3 %>,<%= @triangle.y3 %>,1,false,true,true);
 
-
 	<% if params.has_key?(:second) %>
 		draw_triangle(r, <%= @othertriangle.x1 %>,<%= @othertriangle.y1 %>,<%= @othertriangle.x2 %>,<%= @othertriangle.y2 %>,<%= @othertriangle.x3 %>,<%= @othertriangle.y3 %>,0.2,false,false,false);	
+	<% else %>
+		draw_triangle(r, <%= @alltriangles.select{|e|e.stage==1}.first.x1 %>,<%= @alltriangles.select{|e|e.stage==1}.first.y1 %>,<%= @alltriangles.select{|e|e.stage==1}.first.x2 %>,<%= @alltriangles.select{|e|e.stage==1}.first.y2 %>,<%= @alltriangles.select{|e|e.stage==1}.first.x3 %>,<%= @alltriangles.select{|e|e.stage==1}.first.y3 %>,0.2,false,false,false);	
 	<% end %>
 });
 <% end %>
